@@ -1,20 +1,45 @@
 {
   "name": "aoi.canva",
   "version": "1.0.0",
-  "description": "aoi.canva is a aoi.js extension that allows you to utilize canvas functions with aoi.js bot.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "aoi.canvas - Create and edit images in aoi.js with ease.",
+  "main": "dist/index.js",
+  "keywords": [
+    "canvas",
+    "aoi",
+    "aoi.js",
+    "bdfd",
+    "dbd",
+    "dbd.js",
+    "dbd.ts",
+    "bdfd.js",
+    "@napi-rs/canvas",
+    "image",
+    "gif",
+    "aoi.gif",
+    "aoi.canvas"
+  ],
+  "author": "lordex",
+  "homepage": "https://aoi.js.org/extensions/aoijs/aoicanvas",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aoijs/aoi.canvas.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && echo 'Done compiling!' && jest --passWithNoTests",
+    "api-gen": "npm run build && node api-gen.js && echo 'API file generated/updated.'",
+    "prepublishOnly": "npm run build && npm run api-gen && npm test",
+    "prepare": "npm run build",
+    "release": "npm run prepublishOnly && npm publish"
+  },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.81",
     "gif-encoder-2": "^1.0.5",
     "gif-frames": "^1.0.1"
   },
   "devDependencies": {
+    "@types/node": "^24.9.2",
     "aoi.js": "^6.11.1",
     "discord.js": "^14.24.2",
     "typescript": "^5.9.3"
